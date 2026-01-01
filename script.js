@@ -1,4 +1,4 @@
-let seats = JSON.parse(localStorage.getItem("seats")) || Array.from({length: 56}, (_, i) => ({
+let seats = JSON.parse(localStorage.getItem("seats")) || Array.from({length: 5}, (_, i) => ({
     seatNo: i+1, name: "", mobile: "", admissionDate: "", months: "", dueDate: "", fees: "", photo: ""
 }));
 
@@ -644,7 +644,7 @@ document.getElementById('showFilledBtn').addEventListener('click', function () {
 });
 
 async function backupData() {
-  const backupSeats = seats.slice(0, 56);
+  const backupSeats = seats.slice(0, 5);
   const dataStr = JSON.stringify(backupSeats);
   
   // ✅ 1. Android WebView (if inside app)
@@ -710,7 +710,7 @@ function restoreData(event) {
 
       // सिर्फ 56 सीटों तक ही
       if (Array.isArray(importedData)) {
-        importedData = importedData.slice(0, 56);
+        importedData = importedData.slice(0, 5);
       } else {
         alert("Invalid backup format.");
         return;
@@ -1293,6 +1293,7 @@ function openEditModal(seatNo) {
 
   document.getElementById("editModal").style.display = "block";
 }
+
 
 
 
